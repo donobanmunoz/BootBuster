@@ -3,7 +3,7 @@ import { Map, GoogleApiWrapper, InfoWindow, Marker } from "google-maps-react";
 import { GOOGLE_API } from "../../.env";
 import MapContainer from "./MapContainer.jsx";
 import TwoClock from "./TwoClock";
-import Alarms from "./Alarm";
+import Alarms from "./Alarms";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import NewT from "./NewT.jsx";
 import AlarmClock from './AlarmClock.jsx';

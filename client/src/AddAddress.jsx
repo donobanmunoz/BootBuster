@@ -22,12 +22,12 @@ class AddAddress extends React.Component {
 
   handleSubmit(e) {address
     e.preventDefault();
-    const { address } = this.state;
+    const { address } 	managed to create an alarm/ bugg with the alert pop up= this.state;
 
     this.props.postData('/addAddress', {
       address: address.toLowerCase()
     });
-    
+
 
   }
 

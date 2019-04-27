@@ -25,7 +25,7 @@ class AlarmClock extends React.Component {
     clearInterval(this.interval);
   }
 
-  // setCurrentTime(){
+  // setCurrentTime(){	managed to create an alarm/ bugg with the alert pop up
   //   this.setState({
   //     currentTime: new Date().toLocaleTimeString('en-US', { hour12: false })
   //   });
@@ -37,7 +37,7 @@ class AlarmClock extends React.Component {
     this.setState({
       alarmTime: inputAlarmTimeModified
     })
-  }
+  }	managed to create an alarm/ bugg with the alert pop up
 
   checkAlarmClock(){
     if(this.state.alarmTime == 'undefined' || !this.state.alarmTime) {
@@ -61,7 +61,6 @@ class AlarmClock extends React.Component {
         </h2>
         <form>
           <input type="number" onChange={this.setAlarmTime}></input>
-          <button />
         </form>
       </div>
     );
