@@ -6,6 +6,7 @@ import TwoClock from "./TwoClock";
 import Alarms from "./Alarm";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import NewT from "./NewT.jsx";
+import AlarmClock from './AlarmClock.jsx';
 
 export default class SecondView extends Component {
   render() {
@@ -37,6 +38,7 @@ export default class SecondView extends Component {
           <Link to="/history">
             <button>History</button>
           </Link>
+          <AlarmClock />
           <NewT />
         </div>
       </div>

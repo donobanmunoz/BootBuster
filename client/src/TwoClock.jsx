@@ -3,6 +3,7 @@ import TimerInput from "./TimerInput.jsx";
 import Go from "./Go.jsx";
 import Timer from "./Timer.jsx";
 import { Link, Route } from "react-router-dom";
+import AlarmClock from './AlarmClock.jsx';
 
 export default class TwoClock extends Component {
   constructor(props) {
@@ -60,11 +61,13 @@ export default class TwoClock extends Component {
 
   startCountDown() {
     this.intervalHandle = setInterval(this.tick, 1000);
+    //this will be the one to get passed to the alarms component to get activated
     let time = this.props.trans;
     this.secondsRemaining = time * 60;
   }
 
   render() {
+    const toc = this.state.value;
     console.log(
       " receiving props from second view",
       this.props.trans,
@@ -77,8 +80,11 @@ export default class TwoClock extends Component {
           <div className="col-md-4">
             <Timer value={this.state.value} seconds={this.state.seconds} />
           </div>
+          <AlarmClock toc={this.state.value}/>
         </div>
       </div>
     );
   }
 }
+//not working to get the mins to the AlarmClock component
+// export default TwoClock;

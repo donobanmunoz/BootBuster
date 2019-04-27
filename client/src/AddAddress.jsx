@@ -27,7 +27,7 @@ class AddAddress extends React.Component {
     this.props.postData('/addAddress', {
       address: address.toLowerCase()
     });
-
+    
 
   }
 
