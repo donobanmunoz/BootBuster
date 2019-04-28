@@ -10,24 +10,12 @@ class HistoryComp extends Component {
         items: []
       };
       this.addItem = this.addItem.bind(this);
-      this.getData = this.getData.bind(this);
       this.postData = this.postData.bind(this);
     }
 
-    componentDidMount() {
-      this.getData('/address');
-    }
 
-    getData(url = '') {
-      return fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          this.setState({
-            items: data,
-          });
-        })
-        .catch(err => console.error(err));
-    }
+
+
 
     postData(url = '', data = {}) {
       return fetch(url, {
@@ -37,9 +25,19 @@ class HistoryComp extends Component {
         },
         body: JSON.stringify(data),
       })
-        .then(response => response.json())
-        .then(() => this.getData(u/historyrl))
-        .catch(err => console.error(err));
+        .then(response => {
+          console.log('hello');
+          console.log(response);
+          response.json()
+          console.log('history', history)
+        })
+        .then(() => {
+          console.log('geting data')
+          this.getData(history)
+        })
+        .catch(err => {
+          console.error('error after get data', err)
+        });
     }
 
     addItem(description) {
@@ -48,17 +46,20 @@ class HistoryComp extends Component {
         id: items.length + 1,
         description,
       };
-      const existingIndex = items.findIndex(
+      const existingIndex = item.findIndex(
         item => item.description === newItem.description
       );
     }
 
     render() {
       const { items } = this.state;
+      console.log(this.state.items);
       return (
         <div>
           <AddAddress addItem={this.addItem} postData={this.postData} />
-          <PostList items={items} />
+            <div className="addAddress">
+            <PostList items={items} />
+            </div>
         </div>
       );
     }

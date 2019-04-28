@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 
 class AddAddress extends React.Component {
   constructor(props) {
@@ -9,7 +10,31 @@ class AddAddress extends React.Component {
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.getData = this.getData.bind(this);
   }
+
+  componentDidMount() {
+    this.getData();
+  }
+  componentWillMount(){
+    this.getData();
+  }
+  getData(){
+    console.log('i am hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
+   $.ajax({
+   url: '/address',
+   method: 'GET',
+   success: (data) => {
+     this.setState({
+       items:data
+     });
+   },
+   error: (xhr, err) => {
+     console.log('err', err);
+
+     }
+   })
+ }
 
   handleInput(e) {
     const { target } = e;
@@ -32,10 +57,20 @@ class AddAddress extends React.Component {
   }
 
   render() {
+
     const { address} = this.state;
+
     console.log('this is the address:'+this.state.address);
+
+
     const { addItem, postData } = this.props;
-    return (
+
+    const places = this.state.items.map( lugar =>{
+      return (
+        <li> {lugar.address}</li>
+      )
+    })
+        return (
       <div className='post'>
         <label>
           <input
@@ -46,6 +81,7 @@ class AddAddress extends React.Component {
           />
         </label>
         <button onClick={this.handleSubmit}>Add Address</button>
+        <div>{places}</div>
       </div>
     );
   }

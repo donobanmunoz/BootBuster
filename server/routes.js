@@ -8,6 +8,7 @@ exports.getAllAddress = (request, response) => {
 };
 
 exports.addAddress = (request, response) => {
+  console.log('post address info');
   const { address } = request.body;
   db.postAdress(address, res => {
     response
